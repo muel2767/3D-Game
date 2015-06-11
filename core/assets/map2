@@ -1,0 +1,140 @@
+22222
+23332
+23432
+23332
+22222
+
+try {
+            Scanner level = new Scanner(new FileInputStream("map1"));
+            while(level.hasNextLine())
+            {
+                String line = level.nextLine();
+                //x=y=z=0;
+                while(x<line.length())
+                {
+                   // System.out.print(line.charAt(x));
+                    world[x][y][z]=(int)line.charAt(x)-48;
+                    //System.out.println(x+"  "+y+"   "+z+"   "+ world[x][y][z]);
+                    x++;
+                }
+                worldX=x;
+                x=0;
+                //System.out.println();
+                y++;
+                worldY=y;
+                worldZ=z;
+            }
+            level.close();
+                try {
+                    z=1;
+                    x=y=0;
+                level = new Scanner(new FileInputStream("map2"));
+                while(level.hasNextLine())
+                {
+                    String line = level.nextLine();
+                    
+                    while(x<line.length())
+                    {
+                        //System.out.print(line.charAt(x));
+                        world[x][y][z]=(int)line.charAt(x)-48;//line.charAt(x);
+                        //System.out.println(x+"  "+y+"   "+z+"   "+ world[x][y][z]);
+                        x++;
+                    }
+                    //System.out.println();
+                    x=0;
+                    y++;
+                }
+                z++; //delete maybe?
+                for(z=z; z<10; z++)
+                {
+                    for(int i=0; i<5; i++)
+                    {
+                        for(int j=0; j<5; j++)
+                        {
+                            //System.out.println("");
+                            world[i][j][z]=3;
+                            //System.out.println(i+"  "+j+"   "+z+"   "+ world[i][j][z]);
+                        }
+                    }
+                }
+                //z++;
+                worldZ=z;
+                level.close();
+            } catch (FileNotFoundException ex) 
+            {
+
+            }
+        } catch (FileNotFoundException ex) 
+        {
+
+        }
+
+
+bullets !!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+move()
+if(facing.equals("NORTH"))
+        { 
+            //x+=(ax+.1)*.9;
+            x+=ax;
+            y+=ay;
+            z+=az;//*.9;//(az* (106.0/100.0));
+            tempZ=z;
+            if(tempZ%1>0 && tempZ<1)
+            {
+                tempZ++;
+                tempZ=(int)tempZ;
+            }
+
+            
+        }
+        else if(facing.equals("EAST"))
+        { 
+//            x+=ax*.97;
+//            y+=ay+1.1;
+//            z+=az*.9;
+//            tempZ=z;
+//            if(tempZ%1>0 && tempZ<1)
+//            {
+//                tempZ++;
+//                tempZ=(int)tempZ;
+//            }
+            x+=(ax+.1)*.9;
+            y+=ay+1.05;
+            z+=az*.9;//(az* (106.0/100.0));
+            tempZ=z;
+            if(tempZ%1>0 && tempZ<1)
+            {
+                tempZ++;
+                tempZ=(int)tempZ;
+            }
+        }
+        else if(facing.equals("WEST"))
+        { 
+            x+=(ax+.1)*.9;
+            y+=ay+1.05;
+            z+=az*.9;//(az* (106.0/100.0));
+            tempZ=z;
+            if(tempZ%1>0 && tempZ<1)
+            {
+                tempZ++;
+                tempZ=(int)tempZ;
+            }
+        }
+        else if(facing.equals("SOUTH"))
+        { 
+            x+=(ax+.1)*.9;
+            y+=ay+1;
+            z+=az*.9;//(az* (106.0/100.0));
+            tempZ=z;
+            if(tempZ%1>0 && tempZ<1)
+            {
+                tempZ++;
+                tempZ=(int)tempZ;
+            }
+        }
+        //temp=new ModelInstance(shot, new Vector3(x, y, z));
+        //System.out.println(x+"      "+y+"       "+z);
