@@ -1,0 +1,55 @@
+11111
+11111
+11111
+11111
+11111
+
+if(Gdx.input.isKeyJustPressed(Keys.RIGHT) )
+      {
+          player.camX+=45;
+          //player.camera.lookAt(player.camX, player.camY, player.camZ);
+          player.camera.rotate(Vector3.Z, -45);
+      }
+      else if(Gdx.input.isKeyJustPressed(Keys.UP))
+      {
+        if(player.camY!=0)
+        {
+            player.camY-=45;
+            //player.camera.rotate(Vector3.X, 45);
+            player.camera.lookAt(player.camX, player.camY, player.camZ);
+        }
+      }
+      else if(Gdx.input.isKeyJustPressed(Keys.LEFT))
+      {
+        player.camX-=45;
+        //player.camera.lookAt(player.camX, player.camY, player.camZ);
+        player.camera.rotate(Vector3.Z, 45);
+//        System.out.println(player.camera.direction.x);
+//        System.out.println(player.camera.direction.y);
+//        System.out.println(player.camera.direction.z);
+      }
+else if(Gdx.input.isKeyJustPressed(Keys.DOWN))
+      {
+          player.camY+=45;
+          player.camera.lookAt(player.camX, player.camY, player.camZ);
+      }
+
+@Override
+    public boolean touchDragged(int screenX, int screenY, int i2) 
+    {
+        if(Gdx.input.isButtonPressed(Input.Buttons.RIGHT))
+        {
+            return false;
+        }
+       	float deltaX = -Gdx.input.getDeltaX() * player.degreesPerPixel;
+	float deltaY = -Gdx.input.getDeltaY() * player.degreesPerPixel;
+        if(deltaX>0)
+            player.camera.rotate(Vector3.Z, (float)1.5);
+        else if(deltaX<0)
+            player.camera.rotate(Vector3.Z, (float)-1.5);
+        //player.camera.direction.rotate(player.camera.up, deltaX);
+	player.tmp.set(player.camera.direction).crs(player.camera.up).nor();
+        player.camera.direction.rotate(player.tmp, deltaY);
+        player.setDir(player.camera.direction.x, player.camera.direction.y);
+        return true;
+    }
