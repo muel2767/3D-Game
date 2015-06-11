@@ -136,7 +136,7 @@ public class Bullet
 //                tempZ=(int)tempZ;
 //            }
             if(position.z>0 && position.z<1) position.z=1;
-        }
+        } 
         else if(facing.equals("E"))
         { 
             x+=(ax+.1)*.9;
